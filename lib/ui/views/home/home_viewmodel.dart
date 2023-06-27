@@ -23,6 +23,7 @@ class HomeViewModel extends BaseViewModel {
   // get products
   Future<void> getProducts() async {
     try {
+      // Fetch products
       products = await _apiService.getProducts();
       notifyListeners();
     } catch (e) {
@@ -35,6 +36,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void onProductTap(ProductModel product) {
+    // navigate to product details page
     _navigationService.navigateTo(Routes.productDetailsView,
         arguments: ProductDetailsViewArguments(product: product),
         transition: TransitionsBuilders.fadeIn);

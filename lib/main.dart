@@ -7,7 +7,9 @@ import 'package:mel_store/ui/common/app_colors.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 void main() {
+  // Register dependencies
   setupLocator();
+  // Register Services
   setupDialogUi();
   setupBottomSheetUi();
 
