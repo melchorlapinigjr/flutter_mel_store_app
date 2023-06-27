@@ -19,5 +19,11 @@ The project works in two branch
     1. Main - branch for live and production app
     2. Develop - this where you will checkout branches for adding / modifying features, then once PR passed, the branch will be merge to develop. Testing app builds will be generate in this branch.
 
+## Running the project
+The app relies on some generated scripts and files so it is needed to run this command before running the application:
+- flutter pub run build_runner build --delete-conflicting-outputs
+
+### == E N J O Y ====
+
 ### Ideas for Improvement:
 - Implement language localization :)
