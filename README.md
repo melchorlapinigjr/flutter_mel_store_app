@@ -4,7 +4,8 @@
 A simple store app written in flutter.
 
 ## Project Overview
-Architecture : Stacked
+
+### Architecture : Stacked
 
 Link: (https://pub.dev/packages/stacked)
 
@@ -13,5 +14,10 @@ Stacked is a Flutter Framework for building Production Applications. It is a com
 
 Checkout the [official docs] (https://stacked.filledstacks.com/) for more information.
 
-Ideas for Improvement:
+## Branching
+The project works in two branch
+    1. Main - branch for live and production app
+    2. Develop - this where you will checkout branches for adding / modifying features, then once PR passed, the branch will be merge to develop. Testing app builds will be generate in this branch.
+
+### Ideas for Improvement:
 - Implement language localization :)
