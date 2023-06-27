@@ -1,36 +1,55 @@
+import 'package:flutter/cupertino.dart';
 import 'package:mel_store/app/app.bottomsheets.dart';
 import 'package:mel_store/app/app.dialogs.dart';
 import 'package:mel_store/app/app.locator.dart';
-import 'package:mel_store/ui/common/app_strings.dart';
+import 'package:mel_store/app/models/product_model.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
-  final _bottomSheetService = locator<BottomSheetService>();
 
-  String get counterLabel => 'Counter is: $_counter';
+  List<ProductModel> products = [];
 
-  int _counter = 0;
-
-  void incrementCounter() {
-    _counter++;
-    rebuildUi();
+  // Screen startup logics
+  void runStartupLogic() async {
+    setBusy(true);
+    await getProducts();
+    setBusy(false);
   }
 
-  void showDialog() {
-    _dialogService.showCustomDialog(
-      variant: DialogType.infoAlert,
-      title: 'Stacked Rocks!',
-      description: 'Give stacked $_counter stars on Github',
-    );
-  }
-
-  void showBottomSheet() {
-    _bottomSheetService.showCustomSheet(
-      variant: BottomSheetType.notice,
-      title: ksHomeBottomSheetTitle,
-      description: ksHomeBottomSheetDescription,
-    );
+  // get products
+  Future<void> getProducts() async {
+    try {
+      products = [
+        ProductModel(
+            id: 0,
+            name: 'Beer',
+            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
+        ProductModel(
+            id: 2,
+            name: 'Red Horse',
+            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
+        ProductModel(
+            id: 3,
+            name: 'Tiquela',
+            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
+        ProductModel(
+            id: 4,
+            name: 'Chevas Regal',
+            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
+        ProductModel(
+            id: 5,
+            name: 'Cola',
+            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
+      ];
+      notifyListeners();
+    } catch (e) {
+      _dialogService.showCustomDialog(
+        variant: DialogType.infoAlert,
+        title: 'Error',
+        description: e.toString(),
+      );
+    }
   }
 }

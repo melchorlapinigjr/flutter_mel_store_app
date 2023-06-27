@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mel_store/ui/views/home/widgets/product_thumbnail.dart';
+import 'package:mel_store/ui/views/widgets/my_title.dart';
 import 'package:stacked/stacked.dart';
-import 'package:mel_store/ui/common/app_colors.dart';
-import 'package:mel_store/ui/common/ui_helpers.dart';
 
+import '../widgets/widgets.dart';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -14,65 +15,29 @@ class HomeView extends StackedView<HomeViewModel> {
     HomeViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
-          child: Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                verticalSpaceLarge,
-                Column(
-                  children: [
-                    const Text(
-                      'Hello, STACKED!',
-                      style: TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                    verticalSpaceMedium,
-                    MaterialButton(
-                      color: Colors.black,
-                      onPressed: viewModel.incrementCounter,
-                      child: Text(
-                        viewModel.counterLabel,
-                        style: const TextStyle(color: Colors.white),
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      child: const Text(
-                        'Show Dialog',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: viewModel.showDialog,
-                    ),
-                    MaterialButton(
-                      color: kcDarkGreyColor,
-                      child: const Text(
-                        'Show Bottom Sheet',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: viewModel.showBottomSheet,
-                    ),
-                  ],
-                )
-              ],
-            ),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          title: const MyTitle(
+            title: 'Welcome to Mel Store',
           ),
         ),
+        body: viewModel.isBusy
+            ? const MyLoadingIndicator()
+            : SizedBox(
+                height: MediaQuery.sizeOf(context).height,
+                child: GridView.count(
+                  padding: const EdgeInsets.all(16),
+                  shrinkWrap: true,
+                  mainAxisSpacing: 1,
+                  children: viewModel.products
+                      .map((product) => ProductThumbnail(
+                          name: product.name!, imageUrl: product.imageUrl!))
+                      .toList(),
+                  crossAxisCount: 2,
+                ),
+              ),
       ),
     );
   }
@@ -82,4 +47,10 @@ class HomeView extends StackedView<HomeViewModel> {
     BuildContext context,
   ) =>
       HomeViewModel();
+
+  @override
+  void onViewModelReady(HomeViewModel viewModel) {
+    viewModel.runStartupLogic();
+    super.onViewModelReady(viewModel);
+  }
 }

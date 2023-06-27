@@ -1,3 +1,5 @@
+import 'package:equatable/equatable.dart';
+
 class ProductModel {
   int? id;
   String? name;
@@ -5,12 +7,6 @@ class ProductModel {
   String? firstBrewed;
   String? description;
   String? imageUrl;
-  double? abv;
-  int? ibu;
-  int? targetFg;
-  int? targetOg;
-  int? ebc;
-  int? srm;
   double? ph;
   int? attenuationLevel;
   List<String>? foodPairing;
@@ -24,12 +20,6 @@ class ProductModel {
       this.firstBrewed,
       this.description,
       this.imageUrl,
-      this.abv,
-      this.ibu,
-      this.targetFg,
-      this.targetOg,
-      this.ebc,
-      this.srm,
       this.ph,
       this.attenuationLevel,
       this.foodPairing,
@@ -43,12 +33,6 @@ class ProductModel {
     firstBrewed = json['first_brewed'];
     description = json['description'];
     imageUrl = json['image_url'];
-    abv = json['abv'];
-    ibu = json['ibu'];
-    targetFg = json['target_fg'];
-    targetOg = json['target_og'];
-    ebc = json['ebc'];
-    srm = json['srm'];
     ph = json['ph'];
     attenuationLevel = json['attenuation_level'];
     foodPairing = json['food_pairing'].cast<String>();
@@ -64,12 +48,6 @@ class ProductModel {
     data['first_brewed'] = firstBrewed;
     data['description'] = description;
     data['image_url'] = imageUrl;
-    data['abv'] = abv;
-    data['ibu'] = ibu;
-    data['target_fg'] = targetFg;
-    data['target_og'] = targetOg;
-    data['ebc'] = ebc;
-    data['srm'] = srm;
     data['ph'] = ph;
     data['attenuation_level'] = attenuationLevel;
 
