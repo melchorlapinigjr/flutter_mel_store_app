@@ -10,7 +10,7 @@ class MyButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
+    return ElevatedButton(
       onPressed: onPressed,
       child: Padding(
         padding: const EdgeInsets.all(8),

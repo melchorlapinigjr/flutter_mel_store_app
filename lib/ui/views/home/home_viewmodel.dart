@@ -1,13 +1,13 @@
-import 'package:flutter/cupertino.dart';
-import 'package:mel_store/app/app.bottomsheets.dart';
 import 'package:mel_store/app/app.dialogs.dart';
 import 'package:mel_store/app/app.locator.dart';
+import 'package:mel_store/app/app.router.dart';
 import 'package:mel_store/app/models/product_model.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
+  final _navigationService = locator<NavigationService>();
 
   List<ProductModel> products = [];
 
@@ -51,5 +51,11 @@ class HomeViewModel extends BaseViewModel {
         description: e.toString(),
       );
     }
+  }
+
+  void onProductTap(ProductModel product) {
+    _navigationService.navigateTo(Routes.productDetailsView,
+        arguments: ProductDetailsViewArguments(product: product),
+        transition: TransitionsBuilders.fadeIn);
   }
 }

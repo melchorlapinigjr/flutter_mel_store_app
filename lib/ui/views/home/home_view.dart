@@ -31,8 +31,11 @@ class HomeView extends StackedView<HomeViewModel> {
                   shrinkWrap: true,
                   mainAxisSpacing: 1,
                   children: viewModel.products
-                      .map((product) => ProductThumbnail(
-                          name: product.name!, imageUrl: product.imageUrl!))
+                      .map((product) => InkWell(
+                    onTap: () => viewModel.onProductTap(product),
+                    child: ProductThumbnail(
+                            name: product.name ?? 'No Name.', imageUrl: product.imageUrl!),
+                      ))
                       .toList(),
                   crossAxisCount: 2,
                 ),
