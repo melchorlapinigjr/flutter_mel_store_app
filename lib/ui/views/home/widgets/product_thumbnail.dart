@@ -9,7 +9,10 @@ class ProductThumbnail extends StatelessWidget {
   final double? imageSize;
 
   const ProductThumbnail(
-      {super.key, required this.name, required this.imageUrl, this.imageSize = 148});
+      {super.key,
+      required this.name,
+      required this.imageUrl,
+      this.imageSize = 148});
 
   @override
   Widget build(BuildContext context) {

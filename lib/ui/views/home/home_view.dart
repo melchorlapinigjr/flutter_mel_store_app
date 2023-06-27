@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mel_store/ui/views/home/widgets/product_thumbnail.dart';
-import 'package:mel_store/ui/views/widgets/my_title.dart';
 import 'package:stacked/stacked.dart';
 
 import '../widgets/widgets.dart';
