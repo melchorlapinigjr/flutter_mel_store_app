@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Mel Store',
       theme: Theme.of(context).copyWith(
         primaryColor: kcBackgroundColor,
         focusColor: kcPrimaryColor,

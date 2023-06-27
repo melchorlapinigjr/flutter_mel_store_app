@@ -1,17 +1,14 @@
 # stacked_app
 
-A new Flutter project.
+# Mel Store
+A simple store app written in flutter.
 
-## Getting Started
+## Project Overview
+Architecture : Stacked
 
-This project is a starting point for a Flutter application.
+Link: (https://pub.dev/packages/stacked)
 
-A few resources to get you started if this is your first Flutter project:
+What is Stacked
+Stacked is a Flutter Framework for building Production Applications. It is a complete frontend architecture for Flutter. The framework is created to build scalable, testable and maintainable code for a single developer or a team of developers.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+Checkout the [official docs] (https://stacked.filledstacks.com/) for more information.
