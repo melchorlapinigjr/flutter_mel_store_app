@@ -4,14 +4,18 @@ import 'package:mel_store/ui/enums/title_types.dart';
 class MyTitle extends StatelessWidget {
   final String title;
   final TitleTypes? type;
+  final bool? shouldOverflow;
 
-  const MyTitle({super.key, required this.title, this.type});
+  const MyTitle(
+      {super.key, required this.title, this.type, this.shouldOverflow = true});
 
   @override
   Widget build(BuildContext context) {
     return Text(
       title,
       style: getTitleStyle(context),
+      overflow: shouldOverflow! ? TextOverflow.ellipsis : null,
+      textAlign: TextAlign.center,
     );
   }
 

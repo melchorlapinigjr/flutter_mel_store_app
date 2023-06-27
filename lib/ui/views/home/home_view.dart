@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mel_store/ui/enums/title_types.dart';
 import 'package:mel_store/ui/views/home/widgets/product_thumbnail.dart';
 import 'package:stacked/stacked.dart';
 
@@ -29,17 +30,28 @@ class HomeView extends StackedView<HomeViewModel> {
                 child: GridView.count(
                   padding: const EdgeInsets.all(16),
                   shrinkWrap: true,
-                  mainAxisSpacing: 1,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
                   children: viewModel.products
                       .map((product) => InkWell(
-                    onTap: () => viewModel.onProductTap(product),
-                    child: ProductThumbnail(
-                            name: product.name ?? 'No Name.', imageUrl: product.imageUrl!),
-                      ))
+                            onTap: () => viewModel.onProductTap(product),
+                            child: ProductThumbnail(
+                                name: product.name ?? 'No Name.',
+                                imageUrl: product.imageUrl!),
+                          ))
                       .toList(),
                   crossAxisCount: 2,
                 ),
               ),
+        bottomNavigationBar: Container(
+          height: 64,
+          color: Colors.grey,
+          alignment: AlignmentDirectional.center,
+          child: MyTitle(
+            title: 'Total Products: ${viewModel.products.length}',
+            type: TitleTypes.medium,
+          ),
+        ),
       ),
     );
   }

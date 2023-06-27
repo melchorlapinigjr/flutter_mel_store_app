@@ -1,5 +1,3 @@
-import 'package:equatable/equatable.dart';
-
 class ProductModel {
   int? id;
   String? name;
@@ -7,8 +5,6 @@ class ProductModel {
   String? firstBrewed;
   String? description;
   String? imageUrl;
-  double? ph;
-  int? attenuationLevel;
   List<String>? foodPairing;
   String? brewersTips;
   String? contributedBy;
@@ -20,8 +16,6 @@ class ProductModel {
       this.firstBrewed,
       this.description,
       this.imageUrl,
-      this.ph,
-      this.attenuationLevel,
       this.foodPairing,
       this.brewersTips,
       this.contributedBy});
@@ -33,8 +27,6 @@ class ProductModel {
     firstBrewed = json['first_brewed'];
     description = json['description'];
     imageUrl = json['image_url'];
-    ph = json['ph'];
-    attenuationLevel = json['attenuation_level'];
     foodPairing = json['food_pairing'].cast<String>();
     brewersTips = json['brewers_tips'];
     contributedBy = json['contributed_by'];
@@ -48,8 +40,6 @@ class ProductModel {
     data['first_brewed'] = firstBrewed;
     data['description'] = description;
     data['image_url'] = imageUrl;
-    data['ph'] = ph;
-    data['attenuation_level'] = attenuationLevel;
 
     data['food_pairing'] = foodPairing;
     data['brewers_tips'] = brewersTips;

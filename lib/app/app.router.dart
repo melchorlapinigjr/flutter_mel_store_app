@@ -7,7 +7,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i5;
 import 'package:flutter/material.dart';
-import 'package:mel_store/app/models/product_model.dart' as _i6;
+import 'package:mel_store/core/models/product_model.dart' as _i6;
 import 'package:mel_store/ui/views/home/home_view.dart' as _i2;
 import 'package:mel_store/ui/views/product_details/product_details_view.dart'
     as _i4;

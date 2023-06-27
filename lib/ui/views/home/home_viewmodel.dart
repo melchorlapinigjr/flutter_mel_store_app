@@ -1,14 +1,16 @@
 import 'package:mel_store/app/app.dialogs.dart';
 import 'package:mel_store/app/app.locator.dart';
 import 'package:mel_store/app/app.router.dart';
-import 'package:mel_store/app/models/product_model.dart';
+import 'package:mel_store/core/api_service/api_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
-class HomeViewModel extends BaseViewModel {
-  final _dialogService = locator<DialogService>();
-  final _navigationService = locator<NavigationService>();
+import '../../../core/models/product_model.dart';
 
+class HomeViewModel extends BaseViewModel {
+  final DialogService _dialogService = locator<DialogService>();
+  final NavigationService _navigationService = locator<NavigationService>();
+  final ApiService _apiService = locator<ApiService>();
   List<ProductModel> products = [];
 
   // Screen startup logics
@@ -21,28 +23,7 @@ class HomeViewModel extends BaseViewModel {
   // get products
   Future<void> getProducts() async {
     try {
-      products = [
-        ProductModel(
-            id: 0,
-            name: 'Beer',
-            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
-        ProductModel(
-            id: 2,
-            name: 'Red Horse',
-            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
-        ProductModel(
-            id: 3,
-            name: 'Tiquela',
-            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
-        ProductModel(
-            id: 4,
-            name: 'Chevas Regal',
-            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
-        ProductModel(
-            id: 5,
-            name: 'Cola',
-            imageUrl: 'https://images.punkapi.com/v2/keg.png'),
-      ];
+      products = await _apiService.getProducts();
       notifyListeners();
     } catch (e) {
       _dialogService.showCustomDialog(

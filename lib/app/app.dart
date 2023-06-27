@@ -1,3 +1,5 @@
+import 'package:mel_store/core/api_service/api_service.dart';
+import 'package:mel_store/core/api_service/api_service_impl.dart';
 import 'package:mel_store/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:mel_store/ui/dialogs/info_alert/info_alert_dialog.dart';
 import 'package:mel_store/ui/views/home/home_view.dart';
@@ -18,6 +20,7 @@ import 'package:stacked_services/stacked_services.dart';
     LazySingleton(classType: BottomSheetService),
     LazySingleton(classType: DialogService),
     LazySingleton(classType: NavigationService),
+    LazySingleton(classType: ApiServiceImpl, asType: ApiService),
     // @stacked-service
   ],
   bottomsheets: [
